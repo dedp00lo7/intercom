@@ -6,17 +6,17 @@ using namespace std;
 
 bool IsLoggedIn()
 {
-    
+
     string username, password, un, pw;
-    cout<<"Enter username: ";
-    cin>>username;
-    cout<<"Enter password: ";
-    cin>>password;
-    
+    cout << "Enter username: ";
+    cin >> username;
+    cout << "Enter password: ";
+    cin >> password;
+
     ifstream read("data\\" + username + ".txt");
     getline(read, un);
     getline(read, pw);
-    
+
     if (username == un && password == pw)
     {
         return true;
@@ -25,37 +25,37 @@ bool IsLoggedIn()
     {
         return false;
     }
-    
+
 
 }
 
 int main()
 {
     int choice;
-    cout<<"1: Register\n2: Login\nYour choice: ";
-    cin>>choice;
-    
+    cout << "1: Register\n2: Login\nYour choice: ";
+    cin >> choice;
+
     if (choice == 1)
     {
         string username, password;
-        cout<<"Select a username: ";
-        cin>>username;
-        cout<<"Select a password: ";
-        cin>>password;
+        cout << "Select a username: ";
+        cin >> username;
+        cout << "Select a password: ";
+        cin >> password;
         ofstream file;
-        
+
         file.open("data\\" + username + ".txt");
         file << username << endl << password;
-        file.close;
-        
+        file.close();
+          
         main();
     }
-    else if ( choice == 2 )
+    else if (choice == 2)
     {
         bool status = IsLoggedIn();
         if (!status)
         {
-            cout<< "False Login! ";
+            cout << "False Login! ";
             system("PAUSE");
             return 0;
         }
@@ -63,7 +63,7 @@ int main()
         {
             cout << "Succesfully Logged In! ";
             system("PAUSE");
-            return 1;
+            return 0;
         }
     }
     return 0;
